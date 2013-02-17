@@ -6,88 +6,132 @@
 //  Copyright (c) 2013. Saša Branković. All rights reserved.
 //
 
+#import "NSString+NSJSON.h"
 #import "FXJSDelegate.h"
 #import <objc/runtime.h>
 
 @interface FXJSDelegate()
-@property (nonatomic, strong) NSMutableDictionary *objects;
-@property (nonatomic, strong) id<UIWebViewDelegate> innerDelegate;
+@property (nonatomic, strong) NSMutableDictionary *javaScriptObjects;
 @end
 
 @implementation FXJSDelegate
-- (id)initWithWebViewDelegate:(id<UIWebViewDelegate>)delegate {
+
+- (id)init
+{
     if (self = [super init]) {
-        self.innerDelegate = delegate;
-        self.objects = [NSMutableDictionary dictionary];
+        self.javaScriptObjects = [NSMutableDictionary dictionary];
     }
+    
     return self;
+}
+
+- (void)addJavaScriptObject:(id)object name:(NSString *)name
+{
+    [self.javaScriptObjects setObject:object forKey:name];
 }
 
 #pragma mark UIWebViewDelegate methods
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    [self.innerDelegate webView:webView didFailLoadWithError:error];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSURL *URL = [request URL];
-    NSString *scheme = URL.scheme;
+    NSURL *URL = request.URL;
     
-    if ([scheme isEqualToString:@"fxjs"]) {
+    if ([URL.scheme isEqualToString:@"fxjs"]) {
         [self processWebView:webView URL:URL];
         return NO;
     }
     
-    return [self.innerDelegate webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+    return YES;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self.innerDelegate webViewDidFinishLoad:webView];
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    [self.innerDelegate webViewDidStartLoad:webView];
-}
-
-- (NSString *)JSCodeFromObject:(id)object name:(NSString *)name
+- (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSMutableString JSCode = [NSMutableString stringWithString:@""];
-    [JSCode appendFormat:@"%@ = {};", name];
+    [self loadJavascriptObjectsIntoWebView:webView];
+    [webView stringByEvaluatingJavaScriptFromString:@"if (window.onready) { window.onready(); }" ];
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+}
+
+- (void)loadJavaScriptObject:(id)object name:(NSString *)name intoWebView:(UIWebView *)webView
+{
+    NSMutableString *javaScript = [NSMutableString stringWithString:@""];
+    
+    BOOL undefined = [[webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"window.%@ === undefined;", name]] boolValue];
+    if (undefined == NO) {
+        return;
+    }
+    
+    [javaScript appendFormat:@"%@ = {};", name];
     
     int i = 0;
     unsigned int mc = 0;
-    Method *mlist = class_copyMethodList(object_getClass(t), &mc);
-    for(i = 0; i < mc; i++) {
-        NSString *function = [[NSString stringWithUTF8String:sel_getName(method_getName(mlist[i]))]
-                              stringByReplacingOccurrencesOfString:@"WithParameters:" withString:@""];
-        [JSCode appendFormat:@"%@.%@ = function() {\
+    Method *mlist = class_copyMethodList(object_getClass(object), &mc);
+    for (i = 0; i < mc; i++) {
+    
+        NSString* methodName = [NSString stringWithUTF8String:sel_getName(method_getName(mlist[i]))];
+        if ([methodName rangeOfString:@"WithParameters:webView:"].location == NSNotFound) {
+            continue;
+        }
+        
+        NSString *function = [methodName stringByReplacingOccurrencesOfString:@"WithParameters:webView:" withString:@""];
+        
+        [javaScript appendFormat:@"%@.%@ = function() {\
             var args = [];\
-            for (var i = 0, l = arguments.length; i < l; i++) { args.push(arguments[i]); }\
-            var url = 'fxjs//%@/%@/' + escape(JSON.stringify(args));\
-            window.location = url;", name, function];
+            for (var i = 0, l = arguments.length; i < l; i++) {\
+                if (typeof(arguments[i]) === 'function') {\
+                    var callback = '_c' + new Date().getTime();\
+                    window[callback] = arguments[i];\
+                    args.push(callback);\
+                } else {\
+                    args.push(arguments[i]);\
+                }\
+            }\
+            var payload = { name: '%@', function: '%@', args: args };\
+            var url = 'fxjs://'+ escape(JSON.stringify(payload));\
+            window.location.href = url; };", name, function, name, function];
     }
-                                             
-    return JSCode;
+    
+    NSLog(@"%@", javaScript);
+    [webView stringByEvaluatingJavaScriptFromString:javaScript];
+    
 }
 
-- (void)addJavascriptInterfaceToWebView:(UIWebView *)webView withObject:(id)object name:(NSString *)name
+- (void)loadJavascriptObjectsIntoWebView:(UIWebView *)webView
 {
-    [self.objects setObject:object forKey:name];
-    NSString *JSCode = [self JSCodeFromObject:object name:name];
-    [webView stringByEvaluatingJavaScriptFromString:JSCode];
+    for (id name in self.javaScriptObjects) {
+        id object = [self.javaScriptObjects objectForKey:name];
+        [self loadJavaScriptObject:object name:name intoWebView:(UIWebView *)webView];
+    }
 }
 
-- (void)createCallback {
-    NSError *error = nil;
-    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&error];
-    NSString *JSONString = [[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding];
-    JSCode JSCode = [NSString stringWithFormat:@"%@(%@);", self.callback, JSONString];
-    [self.webView stringByEvaluatingJavaScriptFromString:JSCode];
+- (void)processWebView:(UIWebView *)webView URL:(NSURL *)URL;
+{
+    id payloadJSON = [URL.host JSONObject];
+    if (!payloadJSON) {
+        return;
+    }
+    
+    NSString *name = [payloadJSON objectForKey:@"name"];
+    NSString *function = [payloadJSON objectForKey:@"function"];
+    NSArray *args = [payloadJSON objectForKey:@"args"];
 
-}
-
-- (void)processWebView:(UIWebView *)webView URL:(NSURL *)URL {
-    NSString *URLComponents = [[URL absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    id obj = [self.javaScriptObjects objectForKey:name];
+    if (!obj) {
+        NSLog(@"No JavaScript object %@", name);
+    }
+    
+    NSString *selectorName = [NSString stringWithFormat:@"%@WithParameters:webView:", function];
+    SEL selector = NSSelectorFromString(selectorName);
+    
+    if ([obj respondsToSelector:selector]) {
+        [obj performSelector:selector withObject:args withObject:webView];
+    } else {
+        NSLog(@"Cannot execute %@ - %@ does not respond to %@", function, name, selectorName);
+    }
 }
 
 @end

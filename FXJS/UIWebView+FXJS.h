@@ -2,10 +2,13 @@
 //  UIWebView+FXJS.h
 //  FXJS
 //
-//  Created by Saša Branković on 20.1.2013..
+//  Created by Saša Branković on 16.2.2013..
 //  Copyright (c) 2013. Saša Branković. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 @interface UIWebView (FXJS)
--(void) addJavascriptInterfaceWithObject:(id)object name:(NSString *)name;
+- (NSString *)evaluateJavaScript:(NSString *)javaScript, ...;
+- (void) evaluateJavaScriptFunction:(NSString *)function withParameters:(id)parameter, ... NS_REQUIRES_NIL_TERMINATION;
 @end

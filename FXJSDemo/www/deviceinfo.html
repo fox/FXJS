@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script>
+        window.onready = function() {
+            device.info(function(result) {
+                var deviceInfoJSON = JSON.stringify(result);
+                document.getElementById("device_info").innerHTML = deviceInfoJSON;
+            });
+        };
+        </script>
+    </head>
+    <body>
+        
+        <h3>Device info</h3>
+        <div id="device_info"></div>
+        
+        <br />
+        <br />
+        
+        <a href="calculator.html">Go to calculator.html</a>
+    </body>
+</html>

@@ -14,7 +14,6 @@
 		5A435BD116C0501100CE9C34 /* libFXJS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A435BB816C0501100CE9C34 /* libFXJS.a */; };
 		5A435BD716C0501100CE9C34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A435BD516C0501100CE9C34 /* InfoPlist.strings */; };
 		5A435BDA16C0501100CE9C34 /* FXJSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A435BD916C0501100CE9C34 /* FXJSTests.m */; };
-		5A435BE816C0501F00CE9C34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A435BCC16C0501100CE9C34 /* UIKit.framework */; };
 		5A435BE916C0501F00CE9C34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A435BBB16C0501100CE9C34 /* Foundation.framework */; };
 		5A435BEB16C0501F00CE9C34 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A435BEA16C0501F00CE9C34 /* CoreGraphics.framework */; };
 		5A435BF116C0501F00CE9C34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A435BEF16C0501F00CE9C34 /* InfoPlist.strings */; };
@@ -25,9 +24,15 @@
 		5A435BFD16C0501F00CE9C34 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A435BFC16C0501F00CE9C34 /* Default-568h@2x.png */; };
 		5A435C0016C0501F00CE9C34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A435BFF16C0501F00CE9C34 /* ViewController.m */; };
 		5A435C0316C0501F00CE9C34 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A435C0116C0501F00CE9C34 /* ViewController.xib */; };
-		5A435C0B16C0506800CE9C34 /* FXJSDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A435C0816C0506800CE9C34 /* FXJSDelegate.m */; };
-		5A435C0C16C0506800CE9C34 /* UIWebView+FXJS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A435C0A16C0506800CE9C34 /* UIWebView+FXJS.m */; };
-		5A435C1116C059E900CE9C34 /* DemoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A435C1016C059E900CE9C34 /* DemoObject.m */; };
+		5A435C1116C059E900CE9C34 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A435C1016C059E900CE9C34 /* Calculator.m */; };
+		5A7C41AE16D0FF7700DEF06F /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C41AD16D0FF7700DEF06F /* DeviceInfo.m */; };
+		5AA70ABA16D0225500FE41CB /* FXJSDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A435C0816C0506800CE9C34 /* FXJSDelegate.m */; };
+		5AD8E49116D0C8850076ADA9 /* NSString+NSJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8E48F16D0C4FA0076ADA9 /* NSString+NSJSON.m */; };
+		5AD8E49416D0CC190076ADA9 /* NSObject+NSJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8E49316D0CC190076ADA9 /* NSObject+NSJSON.m */; };
+		5AEF526616D0245D00E0DF5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEF526516D0245D00E0DF5C /* UIKit.framework */; };
+		5AEF526916D02B8700E0DF5C /* UIWebView+FXJS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF526816D02B8700E0DF5C /* UIWebView+FXJS.m */; };
+		5AEF526A16D030AD00E0DF5C /* libFXJS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A435BB816C0501100CE9C34 /* libFXJS.a */; };
+		5AEF526C16D0319E00E0DF5C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 5AEF526B16D0319E00E0DF5C /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,10 +84,18 @@
 		5A435C0216C0501F00CE9C34 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		5A435C0716C0506800CE9C34 /* FXJSDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXJSDelegate.h; sourceTree = "<group>"; };
 		5A435C0816C0506800CE9C34 /* FXJSDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXJSDelegate.m; sourceTree = "<group>"; };
-		5A435C0916C0506800CE9C34 /* UIWebView+FXJS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+FXJS.h"; sourceTree = "<group>"; };
-		5A435C0A16C0506800CE9C34 /* UIWebView+FXJS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+FXJS.m"; sourceTree = "<group>"; };
-		5A435C0F16C059E900CE9C34 /* DemoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoObject.h; sourceTree = "<group>"; };
-		5A435C1016C059E900CE9C34 /* DemoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoObject.m; sourceTree = "<group>"; };
+		5A435C0F16C059E900CE9C34 /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
+		5A435C1016C059E900CE9C34 /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
+		5A7C41AC16D0FF7700DEF06F /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.h; sourceTree = "<group>"; };
+		5A7C41AD16D0FF7700DEF06F /* DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfo.m; sourceTree = "<group>"; };
+		5AD8E48E16D0C4FA0076ADA9 /* NSString+NSJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSJSON.h"; sourceTree = "<group>"; };
+		5AD8E48F16D0C4FA0076ADA9 /* NSString+NSJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSJSON.m"; sourceTree = "<group>"; };
+		5AD8E49216D0CC190076ADA9 /* NSObject+NSJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSJSON.h"; sourceTree = "<group>"; };
+		5AD8E49316D0CC190076ADA9 /* NSObject+NSJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NSJSON.m"; sourceTree = "<group>"; };
+		5AEF526516D0245D00E0DF5C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5AEF526716D02B8700E0DF5C /* UIWebView+FXJS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+FXJS.h"; sourceTree = "<group>"; };
+		5AEF526816D02B8700E0DF5C /* UIWebView+FXJS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+FXJS.m"; sourceTree = "<group>"; };
+		5AEF526B16D0319E00E0DF5C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +122,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A435BE816C0501F00CE9C34 /* UIKit.framework in Frameworks */,
+				5AEF526A16D030AD00E0DF5C /* libFXJS.a in Frameworks */,
+				5AEF526616D0245D00E0DF5C /* UIKit.framework in Frameworks */,
 				5A435BE916C0501F00CE9C34 /* Foundation.framework in Frameworks */,
 				5A435BEB16C0501F00CE9C34 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -121,6 +135,7 @@
 		5A435BAF16C0501100CE9C34 = {
 			isa = PBXGroup;
 			children = (
+				5AEF526516D0245D00E0DF5C /* UIKit.framework */,
 				5A435BBD16C0501100CE9C34 /* FXJS */,
 				5A435BD216C0501100CE9C34 /* FXJSTests */,
 				5A435BEC16C0501F00CE9C34 /* FXJSDemo */,
@@ -155,9 +170,13 @@
 			children = (
 				5A435C0716C0506800CE9C34 /* FXJSDelegate.h */,
 				5A435C0816C0506800CE9C34 /* FXJSDelegate.m */,
-				5A435C0916C0506800CE9C34 /* UIWebView+FXJS.h */,
-				5A435C0A16C0506800CE9C34 /* UIWebView+FXJS.m */,
+				5AEF526716D02B8700E0DF5C /* UIWebView+FXJS.h */,
+				5AEF526816D02B8700E0DF5C /* UIWebView+FXJS.m */,
 				5A435BBE16C0501100CE9C34 /* Supporting Files */,
+				5AD8E48E16D0C4FA0076ADA9 /* NSString+NSJSON.h */,
+				5AD8E48F16D0C4FA0076ADA9 /* NSString+NSJSON.m */,
+				5AD8E49216D0CC190076ADA9 /* NSObject+NSJSON.h */,
+				5AD8E49316D0CC190076ADA9 /* NSObject+NSJSON.m */,
 			);
 			path = FXJS;
 			sourceTree = "<group>";
@@ -192,14 +211,14 @@
 		5A435BEC16C0501F00CE9C34 /* FXJSDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5A7C41B116D10FB300DEF06F /* JavaScriptObjects */,
+				5AEF526B16D0319E00E0DF5C /* www */,
 				5A435BF516C0501F00CE9C34 /* AppDelegate.h */,
 				5A435BF616C0501F00CE9C34 /* AppDelegate.m */,
 				5A435BFE16C0501F00CE9C34 /* ViewController.h */,
 				5A435BFF16C0501F00CE9C34 /* ViewController.m */,
 				5A435C0116C0501F00CE9C34 /* ViewController.xib */,
 				5A435BED16C0501F00CE9C34 /* Supporting Files */,
-				5A435C0F16C059E900CE9C34 /* DemoObject.h */,
-				5A435C1016C059E900CE9C34 /* DemoObject.m */,
 			);
 			path = FXJSDemo;
 			sourceTree = "<group>";
@@ -216,6 +235,17 @@
 				5A435BFC16C0501F00CE9C34 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A7C41B116D10FB300DEF06F /* JavaScriptObjects */ = {
+			isa = PBXGroup;
+			children = (
+				5A435C0F16C059E900CE9C34 /* Calculator.h */,
+				5A435C1016C059E900CE9C34 /* Calculator.m */,
+				5A7C41AC16D0FF7700DEF06F /* DeviceInfo.h */,
+				5A7C41AD16D0FF7700DEF06F /* DeviceInfo.m */,
+			);
+			name = JavaScriptObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +350,7 @@
 				5A435BFB16C0501F00CE9C34 /* Default@2x.png in Resources */,
 				5A435BFD16C0501F00CE9C34 /* Default-568h@2x.png in Resources */,
 				5A435C0316C0501F00CE9C34 /* ViewController.xib in Resources */,
+				5AEF526C16D0319E00E0DF5C /* www in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,8 +377,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A435C0B16C0506800CE9C34 /* FXJSDelegate.m in Sources */,
-				5A435C0C16C0506800CE9C34 /* UIWebView+FXJS.m in Sources */,
+				5AD8E49116D0C8850076ADA9 /* NSString+NSJSON.m in Sources */,
+				5AA70ABA16D0225500FE41CB /* FXJSDelegate.m in Sources */,
+				5AEF526916D02B8700E0DF5C /* UIWebView+FXJS.m in Sources */,
+				5AD8E49416D0CC190076ADA9 /* NSObject+NSJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +399,8 @@
 				5A435BF316C0501F00CE9C34 /* main.m in Sources */,
 				5A435BF716C0501F00CE9C34 /* AppDelegate.m in Sources */,
 				5A435C0016C0501F00CE9C34 /* ViewController.m in Sources */,
-				5A435C1116C059E900CE9C34 /* DemoObject.m in Sources */,
+				5A435C1116C059E900CE9C34 /* Calculator.m in Sources */,
+				5A7C41AE16D0FF7700DEF06F /* DeviceInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +466,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -455,7 +489,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -526,6 +560,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FXJSDemo/FXJSDemo-Prefix.pch";
 				INFOPLIST_FILE = "FXJSDemo/FXJSDemo-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -543,6 +578,7 @@
 				GCC_PREFIX_HEADER = "FXJSDemo/FXJSDemo-Prefix.pch";
 				INFOPLIST_FILE = "FXJSDemo/FXJSDemo-Info.plist";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

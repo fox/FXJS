@@ -1,5 +1,5 @@
 //
-//  DemoObject.h
+//  Calculator.h
 //  FXJS
 //
 //  Created by Saša Branković on 4.2.2013..
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DemoObject : NSObject
--(void)helloWithParameters:(id)parameters callback:(void(^)(id))callback;
+@interface Calculator : NSObject
+- (void)sumWithParameters:(NSArray*)parameters webView:(UIWebView *)webView;
 @end
