@@ -15,15 +15,15 @@ Then write your Objective-C class
 - (void)sumWithParameters:(NSArray*)parameters webView:(UIWebView *)webView;
 @end
 ``` 
-create the JSDelegate, add object to it, set webView delegate
+create the FXJS webView delegate, add object to it 
 
 ```objc
-self.JSDelegate = [[FXJSDelegate alloc] init];
-[self.JSDelegate addJavaScriptObject:calculator name:@"calculator"];
-self.webView.delegate = self.JSDelegate;    
+FXJSDelegate *delegate = [[FXJSDelegate alloc] init];
+[delegate addJavaScriptObject:calculator name:@"calculator"];
+self.webView.delegate = delegate;    
 ```
 
-and you can now make calls to calculator object from your JavaScript
+and you can now make calls to calculator object from JavaScript
 
 ```javascript
 calculator.sum(2,3, function(result) { 
