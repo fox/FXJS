@@ -49,7 +49,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self loadJavascriptObjectsIntoWebView:webView];
-    [webView stringByEvaluatingJavaScriptFromString:@"if (window.appReady) { window.appReady(); }" ];
+    [webView stringByEvaluatingJavaScriptFromString:@"if (window.onscreenready) { window.onscreenready(); }" ];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
