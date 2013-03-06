@@ -83,7 +83,7 @@
             var args = [];\
             for (var i = 0, l = arguments.length; i < l; i++) {\
                 if (typeof(arguments[i]) === 'function') {\
-                    var callback = '_c' + new Date().getTime();\
+                    var callback = '_c' + Math.floor((Math.random()*1000000000)+1);\
                     window[callback] = arguments[i];\
                     args.push(callback);\
                 } else {\
