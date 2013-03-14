@@ -110,11 +110,13 @@
 
 - (void)processWebView:(UIWebView *)webView URL:(NSURL *)URL;
 {
-    id payloadJSON = [URL.host JSONObject];
+    NSString *payloadString = [URL.absoluteString substringFromIndex:@"fxjs://".length];
+    payloadString = [payloadString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    id payloadJSON = [payloadString JSONObject];
     if (!payloadJSON) {
-        return;
+      return;
     }
-    
+  
     NSString *name = [payloadJSON objectForKey:@"name"];
     NSString *function = [payloadJSON objectForKey:@"function"];
     NSArray *args = [payloadJSON objectForKey:@"args"];
